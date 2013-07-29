@@ -17,7 +17,8 @@
       className: 'is-sticky',
       wrapperClassName: 'sticky-wrapper',
       center: false,
-      getWidthFrom: ''
+      width: 0,
+      left: 0
     },
     $window = $(window),
     $document = $(document),
@@ -56,9 +57,12 @@
               .css('position', 'fixed')
               .css('top', newTop);
 
-            if (typeof s.getWidthFrom !== 'undefined') {
-              s.stickyElement.css('width', $(s.getWidthFrom).width());
+            if (s.width > 0) {
+              s.stickyElement.css('width', width);
             }
+            if (s.left > 0) {
+              s.stickyElement.css('left', left);
+            }            
 
             s.stickyElement.parent().addClass(s.className);
             s.currentTop = newTop;
